@@ -1,0 +1,20 @@
+const Osoby = new Array([
+	(firstName: PetrSteier.first, lastName:PetrSteier.last, bday:PetrSteier.day, bmonth:PetrSteier.month, byear:PetrSteier.year, 
+	ssday:PetrSteier.sday, ssmonth:PetrSteier.smonth, endex:PetrSteier.index, seindex:PetrSteier.sindex),
+	[firstName:PavlaSteierova.first, lastName:PavlaSteierova.last, bday:PavlaSteierova.day, bmonth:PavlaSteierova.month, byear:PavlaSteierova.year, 
+	ssday:PavlaSteierova.sday, ssmonth:PavlaSteierova.smonth, endex:PavlaSteierova.index, seindex:PavlaSteierova.sindex],
+	[firstName:AnetaSteierova.first, lastName:AnetaSteierova.last, bday:AnetaSteierova.day, bmonth:AnetaSteierova.month, byear:AnetaSteierova.year, 
+	ssday:AnetaSteierova.sday, ssmonth:AnetaSteierova.smonth, endex:AnetaSteierova.index, seindex:AnetaSteierova.sindex],
+	[firstName:EvaKorbuthova.first, lastName:EvaKorbuthova.last, bday:EvaKorbuthova.day, bmonth:EvaKorbuthova.month, byear:EvaKorbuthova.year, 
+	ssday:EvaKorbuthova.sday, ssmonth:EvaKorbuthova.smonth, endex:EvaKorbuthova.index, seindex:EvaKorbuthova.sindex],
+	[firstName:OlgaValentova.first, lastName:OlgaValentova.last, bday:OlgaValentova.day, bmonth:OlgaValentova.month, byear:OlgaValentova.year, 
+	ssday:OlgaValentova.sday, ssmonth:OlgaValentova.smonth, endex:OlgaValentova.index, seindex:OlgaValentova.sindex],
+	[firstName:StanislavValentaIng.first, lastName:StanislavValentaIng.last, bday:StanislavValentaIng.day, bmonth:StanislavValentaIng.month, byear:StanislavValentaIng.year, 
+	ssday:StanislavValentaIng.sday, ssmonth:StanislavValentaIng.smonth, endex:StanislavValentaIng.index, seindex:StanislavValentaIng.sindex],
+	[firstName:StanislavValenta.first, lastName:StanislavValenta.last, bday:StanislavValenta.day, bmonth:StanislavValenta.month, byear:StanislavValenta.year, 
+	ssday:StanislavValenta.sday, ssmonth:StanislavValenta.smonth, endex:StanislavValenta.index, seindex:StanislavValenta.sindex],
+	[firstName:EliskaSteierova.first, lastName:EliskaSteierova.last, bday:EliskaSteierova.day, bmonth:EliskaSteierova.month, byear:EliskaSteierova.year, 
+	ssday:EliskaSteierova.sday, ssmonth:EliskaSteierova.smonth, endex:EliskaSteierova.index, seindex:EliskaSteierova.sindex],
+	[firstName:Meddie.first, lastName:Meddie.last, bday:Meddie.day, bmonth:Meddie.month, byear:Meddie.year, 
+	ssday:Meddie.sday, ssmonth:Meddie.smonth, endex:Meddie.index, seindex:Meddie.sindex]
+    ]);
