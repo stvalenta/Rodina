@@ -62,8 +62,8 @@ function Osoba (first, last, day, month, year, town, sday, smonth, bjmeno){
 
 
 
-let casik = new Date();
-document.getElementById("demo").innerHTML = casik.getDate() + "." + (casik.getMonth() + 1) + "." + casik.getFullYear();
+
+
 
 
 

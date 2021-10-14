@@ -9,6 +9,7 @@
 		<div id="zarovnani">
 		<h1>Blížící se svátky v rodině</h1>
 		<div id="demo"></div>
+<canvas id="canvas" width="100" height="100"></canvas>
 		<br>
 		<table>
 			<tr>
@@ -127,5 +128,116 @@
 
 		<script src="konstruktor.js"></script>
 		<script src="databaze.js"></script>
+		<script>
+			const d = new Date();
+  document.getElementById("demo").innerHTML =d.getDate() + "." +  (d.getMonth() + 1) + 
+  "." + d.getFullYear();
+</script>
+
+
+<script>
+let canvas = document.getElementById("canvas");							// Získáme si canvas podle ID
+let ctx = canvas.getContext("2d");										// Vytvoříme 2D kontext
+let radius = canvas.height / 2;											// Poloměr nastavit na polovinu canvasu
+ctx.translate(radius, radius);											// Počátek kreslení přesuneme do středu plátna
+radius = radius * 0.90;													// Poloměr zmenšíme na 90% aby se nám tam vlezl okraj hodin
+setInterval(drawClock, 10);											// Po sekundách voláme vykreslení hodin
+
+/** Vykreslení hodin */
+function drawClock()
+{
+	drawFace(ctx, radius);												// Kreslíme kruh hodin
+  	drawNumbers(ctx, radius);											// Namalujeme číslice
+  	drawTime(ctx, radius);												// Vykreslíme čas
+}
+
+/** Nakreslení podkladu hodin */
+function drawFace(ctx, radius)
+{
+	ctx.beginPath();													// Vydáme se na cestu
+  	ctx.arc(0, 0, radius, 0, 2*Math.PI);								// A budeme kroužit celých 360 st.
+  	ctx.closePath();													// Prošli jsme se dokola, cesta je ukonce
+  	ctx.fillStyle = 'white';											// Nastavíme si bílou výplň, co kdyby strakaté pozadí
+  	ctx.fill();															// a celý kruh jím vyplníme
+  
+	// Pro okraj hodin si nachystáme gradientní výplň
+  	// Gradient bude začínat na 95% a končit na 105% poloměru a začínat v centru
+  	let grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);	
+	grad.addColorStop(0, '#333');										// Na jeden okraj si nachystáme šedou
+  	grad.addColorStop(0.5, 'white');									// Uprostřed bude bílá
+  	grad.addColorStop(1, '#333');										// A druhý kraj opět šedý
+  	ctx.strokeStyle = grad;												// Styl výplně si nastaví náš gradient
+  	ctx.lineWidth = radius*0.1;											// Tloušťku čáry na 10% průměru
+  	ctx.stroke();														// Nakreslíme
+
+	// Ještě střed hodin - to místo odkud jdou ručičky
+	ctx.beginPath();													// tedy opět cesta
+  	ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);							// Nachystáme malý kroužek uprostřed
+  	ctx.closePath();													// Cesta končí
+  	ctx.fillStyle = '#333';												// Nastavíme šedou výpln
+  	ctx.fill();															// A vyplníme
+}
+
+/** Vykreslení ciferníku */
+function drawNumbers(ctx, radius)
+{
+	let num;															// Aktuální číslice ciferníku
+  	ctx.font = radius*0.15 + "px arial";								// Nastavíme font a jeho velikost na 15% průměru hodin
+  	ctx.textBaseline="middle";											// Základní linie kde budeme malovat číslice
+  	ctx.textAlign="center";
+
+	for (num = 1; num < 13; num++) {									// Začneme cyklus o 12-ti krocích
+    	let ang = num * Math.PI / 6;									// Vypočítáme si úhel umístění
+    	ctx.rotate(ang);												// Kontext si o daný úhel otočíme
+    	ctx.translate(0, -radius*0.85);									// Přesuneme na správné místo 
+    	ctx.rotate(-ang);												// Otočíme zpět
+    	ctx.fillText(num.toString(), 0, 0);								// Namalujeme číslo
+    	ctx.rotate(ang);												// Kontext uvedeme do původního stavu
+    	ctx.translate(0, radius*0.85);
+    	ctx.rotate(-ang);
+  	}
+}
+
+/** Funkce, která nakreslí ručičku
+ * do vhodného kontextu CTX
+ * Rotované pozici POS
+ * Délce LENGTH a šířce WIDTH
+ */
+function drawHand(ctx, pos, length, width)
+{
+    ctx.lineWidth = width;												// Nastavit styl čar šířku
+    ctx.lineCap = "round";												// Kulaté konce
+	ctx.beginPath();
+    ctx.moveTo(0,0);													// Pero přesunout do středu
+    ctx.rotate(pos);													// Udat směr
+    ctx.lineTo(0, -length);												// A táhnout
+    ctx.stroke();														// Rovnou nakreslíme
+    ctx.rotate(-pos);													// Kontext obnovíme na původní směr
+}
+
+/** Tady budeme počítat pozice ručiček podle aktuálního času */
+function drawTime(ctx, radius)
+{
+	let now = new Date();												// Najdeme si datum
+    let hour = now.getHours();											// Vytáhneme z něj hodiny
+    let minute = now.getMinutes();										// minuty
+    let second = now.getSeconds();										// a sekundy
+    
+	// ********** Hodinová ručička
+    hour = hour % 12
+
+	// Je třeba zohledni i posun pro minuty a sekunky
+    hour = (hour * Math.PI / 6) + (minute * Math.PI / (6 * 60)) + (second * Math.PI / (360 * 60));
+    drawHand(ctx, hour, radius*0.5, radius*0.07);
+
+	// ********* Minuty 
+    minute = (minute * Math.PI / 30) + (second * Math.PI / (30 * 60));				
+    drawHand(ctx, minute, radius*0.8, radius*0.07);
+
+	// ********* Sekundy
+    second = (second * Math.PI / 30);
+    drawHand(ctx, second, radius*0.9, radius*0.02);
+}
+</script>
 	</body>
 	</html>
