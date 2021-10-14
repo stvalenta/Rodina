@@ -14,7 +14,7 @@ function Osoba (first, last, day, month, year, town, sday, smonth, bjmeno){
 	thismonth = this.adate.getMonth();
 	thisday = this.adate.getDate();
 	age = this.thisyear - year -1;
-	if ((((1 + thismonth) >= this.month)) && (thisday >= this.day)){
+	if (((((1 + thismonth) >= this.month)) && (thisday >= this.day)) || (((1 + thismonth) >=this.month))){
 		age += 1;
 	}
 	this.index = this.month - month;
