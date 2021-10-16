@@ -17,45 +17,43 @@ function Osoba (first, last, day, month, year, town, sday, smonth, bjmeno){
 	if (((((1 + thismonth) >= this.month)) && (thisday >= this.day)) || (((1 + thismonth) >=this.month))){
 		age += 1;
 	}
-	this.index = this.month - month;
 	this.sindex = this. month - smonth;
 	this.bjmeno = bjmeno;
 	bvek = bjmeno + bjmeno;
 	bnarozeniny = bvek + bjmeno;
 	bsvatek = bnarozeniny + bjmeno;
-	chtml = bsvatek + this.bjmeno;
+	chtml = bsvatek + bjmeno;
 
 	function myFunctionx() {
-         if ((((month - thismonth) == 1) || ((month - thismonth) == 2)) || 
-         	((smonth - thismonth) == 1) || ((smonth - thismonth) == 2)){
-           document.getElementById(bjmeno).innerHTML = first + " " + last;
-           document.getElementById(bvek).innerHTML = age;
-           document.getElementById(bnarozeniny).innerHTML = date.getDate() + "." + date.getMonth() + 
-           "." + date.getFullYear();
-           document.getElementById(bsvatek).innerHTML = sdate.getDate() + "." + sdate.getMonth();
+          if ((((((month - thismonth) == 1) || ((month - thismonth) == 2)) || ((smonth - thismonth) == 1) || 
+         	  ((smonth - thismonth) == 2))) && ((!((((((((month - thismonth) == 1) && (((smonth - thismonth) != 1) || 
+         	  (smonth - thismonth) != 2))) || (((month - thismonth) != 1) || (month - thismonth) != 2)) && 
+         	  ((smonth - thismonth) == 1))  && (thisday > day) && (thisday > sday)))))){
+              document.getElementById(bjmeno).innerHTML = first + " " + last;
+              document.getElementById(bvek).innerHTML = age;
+              document.getElementById(bnarozeniny).innerHTML = date.getDate() + "." + date.getMonth() + 
+              "." + date.getFullYear();
+              document.getElementById(bsvatek).innerHTML = sdate.getDate() + "." + sdate.getMonth();
            
-           if (((month - thismonth) == 1) || ((month - thismonth) == 2)){
-           	document.getElementById(bnarozeniny).style.backgroundColor = "red";
-           	if (((month - thismonth) == 1) && (thisday > day)){
-           		document.getElementById(bnarozeniny).style.backgroundColor = "grey";
-           	}
-           }
-           if (((smonth - thismonth) == 1) || ((smonth - thismonth) == 2)){
-           	document.getElementById(bsvatek).style.backgroundColor = "red";
-           	if (((smonth - thismonth) == 1) && (thisday > sday)){
-           		document.getElementById(bsvatek).style.backgroundColor = "gray";
-           	}
-           }
-         }
-         else{
-         	document.getElementById(chtml).style.display = "none";
-         }
-         if ((((((((month - thismonth) == 1) && (((smonth - thismonth) != 1) || (smonth - thismonth) != 2))) || 
-         	(((month - thismonth) != 1) || (month - thismonth) != 2)) && ((smonth - thismonth) == 1))  && 
-         	(thisday > day) && 
-         	(thisday > sday))){
-         	document.getElementById(chtml).style.display = "none";
-         }
+              if (((month - thismonth) == 1) || ((month - thismonth) == 2)){
+           	     document.getElementById(bnarozeniny).style.backgroundColor = "red";
+           	      if (((month - thismonth) == 1) && (thisday > day)){
+           		    document.getElementById(bnarozeniny).style.backgroundColor = "grey";
+           	      }
+              }
+              if (((smonth - thismonth) == 1) || ((smonth - thismonth) == 2)){
+           	    document.getElementById(bsvatek).style.backgroundColor = "red";
+           	    if (((smonth - thismonth) == 1) && (thisday > sday)){
+           		    document.getElementById(bsvatek).style.backgroundColor = "gray";
+           	    }
+              }
+          }
+          else{
+         	  document.getElementById(chtml).style.display = "none";
+          }
+
+
+         
     }
     myFunctionx();
 }
