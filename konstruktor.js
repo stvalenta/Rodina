@@ -14,7 +14,7 @@ function Osoba (first, last, day, month, year, town, sday, smonth, bjmeno){
 	thismonth = this.adate.getMonth();
 	thisday = this.adate.getDate();
 	age = this.thisyear - year -1;
-	if (((((1 + thismonth) >= this.month)) && (thisday >= this.day)) || (((1 + thismonth) >=this.month))){
+	if (((((thismonth) > month)) && (thisday >= day)) || (((thismonth) > month))){
 		age += 1;
 	}
 	this.sindex = this. month - smonth;
@@ -32,15 +32,15 @@ function Osoba (first, last, day, month, year, town, sday, smonth, bjmeno){
          	  ((smonth - thismonth) == 1))  && (thisday > day) && (thisday > sday)))))){
     let kolizes = sdate.getMonth();
   let kolizen = date.getMonth();
-          if (smonth == 1){kolizes = 1;}
+          if (smonth == 1){kolizes = smonth;}
           if (sdate.getMonth() == 0){kolizes += 12;}
   
           if (date.getMonth() == 0){kolizen += 12;}
               document.getElementById(bjmeno).innerHTML = first + " " + last;
               document.getElementById(bvek).innerHTML = age;
-              document.getElementById(bnarozeniny).innerHTML = date.getDate() + "." + kolizen + 
-              "." + date.getFullYear();
-              document.getElementById(bsvatek).innerHTML = sdate.getDate() + "." + kolizes;
+              document.getElementById(bnarozeniny).innerHTML = day + "." + kolizen + 
+              "." + year;
+              document.getElementById(bsvatek).innerHTML = sday + "." + kolizes;
            
               if (((month - thismonth) == 1) || ((month - thismonth) == 2)){
            	     document.getElementById(bnarozeniny).style.backgroundColor = "red";
