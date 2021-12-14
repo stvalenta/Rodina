@@ -42,17 +42,16 @@ function Osoba (first, last, day, month, year, town, sday, smonth, bjmeno){
               "." + year;
               document.getElementById(bsvatek).innerHTML = sday + "." + kolizes;
            
-              if (((month - thismonth) == 1) || ((month - thismonth) == 2) || ((month - thismonth) == -10)){
+              if (((((month - thismonth) == 1) || ((month - thismonth) == 2) || ((month - thismonth) == -10))) && 
+			  (!(((month - thismonth) == 1) && (thisday > day))))
+			  {
            	     document.getElementById(bnarozeniny).style.backgroundColor = "red";
-           	      if (((month - thismonth) == 1) && (thisday > day)){
-           		    document.getElementById(bnarozeniny).style.backgroundColor = "grey";
-           	      }
+           	      
               }
-              if (((smonth - thismonth) == 1) || ((smonth - thismonth) == 2) || ((smonth - thismonth) == -10)){
+              if (((((smonth - thismonth) == 1) || ((smonth - thismonth) == 2) || ((smonth - thismonth) == -10))) && 
+			  (!(((smonth - thismonth) == 1) && (thisday > sday)))) {
            	    document.getElementById(bsvatek).style.backgroundColor = "red";
-           	    if (((smonth - thismonth) == 1) && (thisday > sday)){
-           		    document.getElementById(bsvatek).style.backgroundColor = "gray";
-           	    }
+           	    
               }
           }
           else{
