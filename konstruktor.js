@@ -17,7 +17,7 @@ function Osoba (first, last, day, month, year, town, sday, smonth, bjmeno){
 	if (((((thismonth) > month)) && (thisday >= day)) || (((thismonth) > month))){
 		age += 1;
 	}
-	this.sindex = this. month - smonth;
+	this.sindex = this.month - smonth;
 	this.bjmeno = bjmeno;
 	bvek = bjmeno + bjmeno;
 	bnarozeniny = bvek + bjmeno;
@@ -29,7 +29,7 @@ function Osoba (first, last, day, month, year, town, sday, smonth, bjmeno){
           if ((((((month - thismonth) == 1) || ((month - thismonth) == 2)) || ((smonth - thismonth) == 1) || 
          	  ((smonth - thismonth) == 2))) && ((!((((((((month - thismonth) == 1) && (((smonth - thismonth) != 1) || 
          	  (smonth - thismonth) != 2))) || (((month - thismonth) != 1) || (month - thismonth) != 2)) && 
-         	  ((smonth - thismonth) == 1))  || (thisday > day) && (thisday > sday)))))){
+         	  ((smonth - thismonth) == 1))  && (thisday > day) && (thisday > sday)))))){
     let kolizes = sdate.getMonth();
   let kolizen = date.getMonth();
           if (smonth == 1){kolizes = smonth;}
