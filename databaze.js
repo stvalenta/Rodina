@@ -14,3 +14,5 @@ const AndreaMontalvo = new Osoba("Andrea", "Montalvo", 24, 6, 1980, "Austin", 26
 const MarieCapkova = new Osoba("Marie", "Čapková", 12, 11, 1952, "Prachatice", 12, 9, "m");
 const RobinValenta = new Osoba("Robin", "Valenta", 11, 12, 1975, "Pivkovice", 30, 1, "n");
 const VojtaHyka = new Osoba("Vojta", "Hyka", 14, 8, 1989, "Praha", 23, 4, "o");
+const AndreaWeckova = new Osoba("Andrea", "Wecková", 21, 10, 1970, "Lhenice", 26, 9, "p");
+const JakubMartiniak = new Osoba("Jakub", "Martiniak", 23, 11, 1996, "Bílsko", 25, 7, "k");
